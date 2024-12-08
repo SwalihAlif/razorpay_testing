@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+</head>
+<body>
+    <h2>Payment Form</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label for="amount">Amount</label><br>
+        <input type="number" name="amount" id="amount" step="0.01" required><br>
+        <label for="amount">Total Items</label><br>
+        <input type="number" name="total_items" id="total_items" step="1" min="1" required><br>
+        <button type="submit" style="color: blueviolet;">Razorpay</button>
+
+    </form>
+
+    <br>
+    <form method="post" action="{% url 'cod_payment' %}">
+        {% csrf_token %}
+        <label for=""></label><br>
+        <input type="hidden" name="amount" id="amount" value="{{ amount }}"><br>
+        <label for=""></label><br>
+        <input type="hidden" name="total_items" id="total_items" value="{{ total_items }}"><br>
+        <button type="submit" style="color: red">Cash On Delivery</button>
+
+    </form>
+</body>
+</html>
